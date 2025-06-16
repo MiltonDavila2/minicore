@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Comisiones</title>
+</head>
+<body>
+<h1>Calcular Comisiones</h1>
+
+<form action="/calcular" method="post">
+    <label>Desde:</label>
+    <input type="date" name="desde" required>
+    <label>Hasta:</label>
+    <input type="date" name="hasta" required>
+    <button type="submit">Calcular</button>
+</form>
+
+<div th:if="${resultado != null}">
+    <h2>Resultado</h2>
+    <table border="1">
+        <tr>
+            <th>Vendedor</th>
+            <th>Comisión</th>
+        </tr>
+        <tr th:each="entry : ${resultado}">
+            <td th:text="${entry.key}"></td>
+            <td th:text="${entry.value}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
